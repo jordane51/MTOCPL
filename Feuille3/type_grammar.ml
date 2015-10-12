@@ -28,6 +28,7 @@ type term =
   | TmVar  of id * ty                    (* Variable *)
   | TmAbs  of id * ty * term             (* Abstraction *)
   | TmApp  of term * term                (* Application *)
+  | TmEq   of term * term		 (* Equality *)
 
 let rec int_to_term n = if (n == 0) then TmZero
 			else TmSucc (int_to_term (n-1));;

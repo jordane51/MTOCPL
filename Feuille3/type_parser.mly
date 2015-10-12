@@ -44,5 +44,5 @@ expr:
 | LAMBDA var ARROW expr           { TmAbs ($2,Unk,$4) }
 | expr expr                       { TmApp ($1,$2) }
 | IF expr THEN expr ELSE expr     { TmIf  ($2,$4,$6,Unk) }
-;
+| expr == expr			  { TmEq ($1,$3) }
 

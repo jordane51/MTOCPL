@@ -49,6 +49,7 @@ let rec term_to_string t = match t with
     " : "^(ty_to_string t)^
     " . "^(term_to_string e)^" )"
   | TmApp (a,b)   -> (term_to_string a)^" "^(term_to_string b)
+  | TmEq (x,y) -> (term_to_string x)^" = "^(term_to_string y)
 
 let context_to_string (Ctxt c) = 
   Printf.printf "--- Context : \n";
@@ -124,6 +125,13 @@ let rec compute_constraints (Ctxt ct:context) (t:term) = match t with
     (newty, Ctxt pct,
      Cstr ((na, TyArr (nb, newty))::(acon@bcon)),
      TmApp(ta,tb))
+     
+  | TmEq (x,y)     ->
+    let (nx, _, Cstr xcon, tx) = compute_constraints (Ctxt ct) x in
+    let (ny, _, Cstr ycon, ty) = compute_constraints (Ctxt ct) y in
+    let bcon = TmEq (nx, ny) in
+      (nx, Ctxt ct, Cstr bcon)
+    
 
 (*************************************************************)
 (*          Helper functions on type transformations         *)
@@ -156,6 +164,8 @@ let rec apply_rename_term (f:ty_trans) (x:term) =
   | TmApp  (u,v)         -> TmApp  (apply_rename_term f u,
                                     apply_rename_term f v)
   | TmSucc  u            -> TmSucc (apply_rename_term f u)
+  | TmEq   (x,y)         -> TmEq   (apply_rename_term f x,
+				    apply_rename_term f y)
   | _ -> x
 
 (* Apply recursive transformation on a list of constraints or a
@@ -298,6 +308,7 @@ let terms =
   [
 
     "4";
+    "if true then 1 else 0";
 
   ];;
 
