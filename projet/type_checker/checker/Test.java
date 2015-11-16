@@ -25,11 +25,12 @@ class Test {
     private static List<String> testsOK = Arrays.asList(
 	"Example1.fwj",
 	"Example3.fwj",
-	"Example4.fwj");
+	"ok1.fwj");
 
     private static List<Tuple<String,String>> testsKO = Arrays.asList(
-    	      new Tuple<String,String>("Example2.fwj","[checker.typecheck.FJPathCycleException: Cycle in path: [ClassName: A]]"),
-    new Tuple<String,String>("Example4.fwj","[checker.typecheck.FJPathCycleException: Cycle in path: [ClassName: A]]"));
+  	      new Tuple<String,String>("Example2.fwj","[checker.typecheck.FJPathCycleException: Cycle in path: [ClassName: A]]"),
+	      new Tuple<String,String>("nok2.fwj","[checker.passes.FJException: Constructor fields do not match parent class]"),
+    	      new Tuple<String, String>("nok1.fwj","ClassName: ClassName: C  does not exist in classtable"));
 
     // Launch the typechecker on a given file, and return the error
     // message if any, and the empty string otherwise.
