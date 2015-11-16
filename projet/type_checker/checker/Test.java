@@ -20,7 +20,7 @@ import checker.passes.FJException;
 class Test {
 
     private static final String exmdir =
-	"/home/renault/teach/bordeaux/mtocpl/ZDevoir/code/type_checker.orig/examples";
+	"/home/remi/Desktop/MTOCPL/projet/type_checker/examples";
 
     private static List<String> testsOK = Arrays.asList(
 	"Example1.fwj",
