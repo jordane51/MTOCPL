@@ -24,10 +24,12 @@ class Test {
 
     private static List<String> testsOK = Arrays.asList(
 	"Example1.fwj",
-	"Example3.fwj");
+	"Example3.fwj",
+	"Example4.fwj");
 
     private static List<Tuple<String,String>> testsKO = Arrays.asList(
-      new Tuple<String,String>("Example2.fwj","[checker.typecheck.FJPathCycleException: Cycle in path: [ClassName: A]]"));
+    	      new Tuple<String,String>("Example2.fwj","[checker.typecheck.FJPathCycleException: Cycle in path: [ClassName: A]]"),
+    new Tuple<String,String>("Example4.fwj","[checker.typecheck.FJPathCycleException: Cycle in path: [ClassName: A]]"));
 
     // Launch the typechecker on a given file, and return the error
     // message if any, and the empty string otherwise.
@@ -62,7 +64,9 @@ class Test {
     public static void main(String[] args) {
 	for (String filename : testsOK) {
 	    System.out.print(" * " + filename);
-	    Test.typeCheck(Test.exmdir + "/" + filename);
+	    String result = Test.typeCheck(Test.exmdir + "/" + filename);
+	    if (!result.equals(""))
+	    	System.out.println(" "+result+" ");
 	    System.out.println(" .");
 	}
 	for (Tuple<String,String> t : testsKO) {
