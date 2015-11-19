@@ -1,8 +1,8 @@
 all: java
 
 sable:
-	@sablecc -d . grammar/Grammar.sablecc
-	@patch -d checker/parser/ < patches/sable_unchecked.patch
+	@/home/remi/Desktop/MTOCPL/projet/sablecc-3.7/bin/sablecc -d . grammar/Grammar.sablecc
+	#@patch -d checker/parser/ < patches/sable_unchecked.patch
 
 java:
 	@mkdir -p build

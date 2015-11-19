@@ -25,6 +25,7 @@ public final class TRSq extends Token
       return new TRSq(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTRSq(this);

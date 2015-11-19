@@ -29,9 +29,9 @@ public final class AClassDecl extends PClassDecl
         @SuppressWarnings("hiding") TExtends _extends_,
         @SuppressWarnings("hiding") TIdentifier _extendsname_,
         @SuppressWarnings("hiding") TLBrace _lBrace_,
-        @SuppressWarnings("hiding") List<PFieldDecl> _fieldDecl_,
+        @SuppressWarnings("hiding") List<?> _fieldDecl_,
         @SuppressWarnings("hiding") PConstructorDecl _constructorDecl_,
-        @SuppressWarnings("hiding") List<PMethodDecl> _methodDecl_,
+        @SuppressWarnings("hiding") List<?> _methodDecl_,
         @SuppressWarnings("hiding") TRBrace _rBrace_)
     {
         // Constructor
@@ -70,6 +70,7 @@ public final class AClassDecl extends PClassDecl
             cloneNode(this._rBrace_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAClassDecl(this);
@@ -205,18 +206,24 @@ public final class AClassDecl extends PClassDecl
         return this._fieldDecl_;
     }
 
-    public void setFieldDecl(List<PFieldDecl> list)
+    public void setFieldDecl(List<?> list)
     {
-        this._fieldDecl_.clear();
-        this._fieldDecl_.addAll(list);
-        for(PFieldDecl e : list)
+        for(PFieldDecl e : this._fieldDecl_)
         {
+            e.parent(null);
+        }
+        this._fieldDecl_.clear();
+
+        for(Object obj_e : list)
+        {
+            PFieldDecl e = (PFieldDecl) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._fieldDecl_.add(e);
         }
     }
 
@@ -250,18 +257,24 @@ public final class AClassDecl extends PClassDecl
         return this._methodDecl_;
     }
 
-    public void setMethodDecl(List<PMethodDecl> list)
+    public void setMethodDecl(List<?> list)
     {
-        this._methodDecl_.clear();
-        this._methodDecl_.addAll(list);
-        for(PMethodDecl e : list)
+        for(PMethodDecl e : this._methodDecl_)
         {
+            e.parent(null);
+        }
+        this._methodDecl_.clear();
+
+        for(Object obj_e : list)
+        {
+            PMethodDecl e = (PMethodDecl) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._methodDecl_.add(e);
         }
     }
 

@@ -54,6 +54,7 @@ public final class AThisFieldAssig extends PThisFieldAssig
             cloneNode(this._semicolon_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAThisFieldAssig(this);

@@ -25,6 +25,7 @@ public final class TTclass extends Token
       return new TTclass(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTTclass(this);

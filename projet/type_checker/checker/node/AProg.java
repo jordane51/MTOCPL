@@ -16,7 +16,7 @@ public final class AProg extends PProg
     }
 
     public AProg(
-        @SuppressWarnings("hiding") List<PClassDecl> _classDecl_)
+        @SuppressWarnings("hiding") List<?> _classDecl_)
     {
         // Constructor
         setClassDecl(_classDecl_);
@@ -30,6 +30,7 @@ public final class AProg extends PProg
             cloneList(this._classDecl_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAProg(this);
@@ -40,18 +41,24 @@ public final class AProg extends PProg
         return this._classDecl_;
     }
 
-    public void setClassDecl(List<PClassDecl> list)
+    public void setClassDecl(List<?> list)
     {
-        this._classDecl_.clear();
-        this._classDecl_.addAll(list);
-        for(PClassDecl e : list)
+        for(PClassDecl e : this._classDecl_)
         {
+            e.parent(null);
+        }
+        this._classDecl_.clear();
+
+        for(Object obj_e : list)
+        {
+            PClassDecl e = (PClassDecl) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._classDecl_.add(e);
         }
     }
 

@@ -10,6 +10,7 @@ public class AnalysisAdapter implements Analysis
     private Hashtable<Node,Object> in;
     private Hashtable<Node,Object> out;
 
+    @Override
     public Object getIn(Node node)
     {
         if(this.in == null)
@@ -20,6 +21,7 @@ public class AnalysisAdapter implements Analysis
         return this.in.get(node);
     }
 
+    @Override
     public void setIn(Node node, Object o)
     {
         if(this.in == null)
@@ -37,6 +39,7 @@ public class AnalysisAdapter implements Analysis
         }
     }
 
+    @Override
     public Object getOut(Node node)
     {
         if(this.out == null)
@@ -47,6 +50,7 @@ public class AnalysisAdapter implements Analysis
         return this.out.get(node);
     }
 
+    @Override
     public void setOut(Node node, Object o)
     {
         if(this.out == null)
@@ -64,237 +68,290 @@ public class AnalysisAdapter implements Analysis
         }
     }
 
+    @Override
     public void caseStart(Start node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAProg(AProg node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAClassDecl(AClassDecl node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAFieldDecl(AFieldDecl node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAConstructorDecl(AConstructorDecl node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAMethodDecl(AMethodDecl node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAParamArgsParamDeclList(AParamArgsParamDeclList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAEmptyParamDeclList(AEmptyParamDeclList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAIdentParamArg(AIdentParamArg node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAThisParamArg(AThisParamArg node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseACommaParamArgList(ACommaParamArgList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAFieldListFieldList(AFieldListFieldList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAEmptyFieldList(AEmptyFieldList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAFieldName(AFieldName node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseACommaField(ACommaField node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAThisFieldAssig(AThisFieldAssig node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseANonLeftRecTermTerm(ANonLeftRecTermTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAFieldAccessTerm(AFieldAccessTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAMethodCallTerm(AMethodCallTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseACastTerm(ACastTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAVariableNonLeftRecTerm(AVariableNonLeftRecTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAThisNonLeftRecTerm(AThisNonLeftRecTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAObjectCreationNonLeftRecTerm(AObjectCreationNonLeftRecTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseABracketNonLeftRecTerm(ABracketNonLeftRecTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseATermListTermList(ATermListTermList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseAEmptyTermList(AEmptyTermList node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseACommaTerm(ACommaTerm node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTTclass(TTclass node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTExtends(TExtends node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTSuper(TSuper node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTThis(TThis node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTNew(TNew node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTReturn(TReturn node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTLBrace(TLBrace node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTRBrace(TRBrace node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTSemicolon(TSemicolon node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTComma(TComma node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTLPar(TLPar node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTRPar(TRPar node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTLSq(TLSq node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTRSq(TRSq node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTPeriod(TPeriod node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTEq(TEq node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTNewLine(TNewLine node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTBlank(TBlank node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseTIdentifier(TIdentifier node)
     {
         defaultCase(node);
     }
 
+    @Override
     public void caseEOF(EOF node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseInvalidToken(InvalidToken node)
     {
         defaultCase(node);
     }

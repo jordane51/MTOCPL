@@ -18,7 +18,7 @@ public final class AFieldListFieldList extends PFieldList
 
     public AFieldListFieldList(
         @SuppressWarnings("hiding") PFieldName _fieldName_,
-        @SuppressWarnings("hiding") List<PCommaField> _commaField_)
+        @SuppressWarnings("hiding") List<?> _commaField_)
     {
         // Constructor
         setFieldName(_fieldName_);
@@ -35,6 +35,7 @@ public final class AFieldListFieldList extends PFieldList
             cloneList(this._commaField_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAFieldListFieldList(this);
@@ -70,18 +71,24 @@ public final class AFieldListFieldList extends PFieldList
         return this._commaField_;
     }
 
-    public void setCommaField(List<PCommaField> list)
+    public void setCommaField(List<?> list)
     {
-        this._commaField_.clear();
-        this._commaField_.addAll(list);
-        for(PCommaField e : list)
+        for(PCommaField e : this._commaField_)
         {
+            e.parent(null);
+        }
+        this._commaField_.clear();
+
+        for(Object obj_e : list)
+        {
+            PCommaField e = (PCommaField) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._commaField_.add(e);
         }
     }
 

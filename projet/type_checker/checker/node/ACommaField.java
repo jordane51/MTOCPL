@@ -34,6 +34,7 @@ public final class ACommaField extends PCommaField
             cloneNode(this._fieldName_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseACommaField(this);

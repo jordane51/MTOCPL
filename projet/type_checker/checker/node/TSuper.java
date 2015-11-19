@@ -25,6 +25,7 @@ public final class TSuper extends Token
       return new TSuper(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTSuper(this);

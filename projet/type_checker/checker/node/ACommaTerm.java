@@ -34,6 +34,7 @@ public final class ACommaTerm extends PCommaTerm
             cloneNode(this._term_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseACommaTerm(this);

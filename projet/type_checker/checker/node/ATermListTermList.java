@@ -18,7 +18,7 @@ public final class ATermListTermList extends PTermList
 
     public ATermListTermList(
         @SuppressWarnings("hiding") PTerm _term_,
-        @SuppressWarnings("hiding") List<PCommaTerm> _commaTerm_)
+        @SuppressWarnings("hiding") List<?> _commaTerm_)
     {
         // Constructor
         setTerm(_term_);
@@ -35,6 +35,7 @@ public final class ATermListTermList extends PTermList
             cloneList(this._commaTerm_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseATermListTermList(this);
@@ -70,18 +71,24 @@ public final class ATermListTermList extends PTermList
         return this._commaTerm_;
     }
 
-    public void setCommaTerm(List<PCommaTerm> list)
+    public void setCommaTerm(List<?> list)
     {
-        this._commaTerm_.clear();
-        this._commaTerm_.addAll(list);
-        for(PCommaTerm e : list)
+        for(PCommaTerm e : this._commaTerm_)
         {
+            e.parent(null);
+        }
+        this._commaTerm_.clear();
+
+        for(Object obj_e : list)
+        {
+            PCommaTerm e = (PCommaTerm) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._commaTerm_.add(e);
         }
     }
 

@@ -19,6 +19,7 @@ public final class AEmptyFieldList extends PFieldList
         return new AEmptyFieldList();
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAEmptyFieldList(this);

@@ -25,6 +25,7 @@ public final class TNewLine extends Token
       return new TNewLine(getText(), getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTNewLine(this);

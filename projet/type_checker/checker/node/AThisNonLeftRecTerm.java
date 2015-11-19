@@ -29,6 +29,7 @@ public final class AThisNonLeftRecTerm extends PNonLeftRecTerm
             cloneNode(this._this_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAThisNonLeftRecTerm(this);

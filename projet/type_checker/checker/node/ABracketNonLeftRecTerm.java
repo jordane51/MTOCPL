@@ -39,6 +39,7 @@ public final class ABracketNonLeftRecTerm extends PNonLeftRecTerm
             cloneNode(this._rPar_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseABracketNonLeftRecTerm(this);

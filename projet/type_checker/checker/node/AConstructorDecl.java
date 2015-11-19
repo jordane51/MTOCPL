@@ -37,7 +37,7 @@ public final class AConstructorDecl extends PConstructorDecl
         @SuppressWarnings("hiding") PFieldList _fieldList_,
         @SuppressWarnings("hiding") TRPar _r2_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_,
-        @SuppressWarnings("hiding") List<PThisFieldAssig> _thisFieldAssig_,
+        @SuppressWarnings("hiding") List<?> _thisFieldAssig_,
         @SuppressWarnings("hiding") TRBrace _rBrace_)
     {
         // Constructor
@@ -85,6 +85,7 @@ public final class AConstructorDecl extends PConstructorDecl
             cloneNode(this._rBrace_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAConstructorDecl(this);
@@ -345,18 +346,24 @@ public final class AConstructorDecl extends PConstructorDecl
         return this._thisFieldAssig_;
     }
 
-    public void setThisFieldAssig(List<PThisFieldAssig> list)
+    public void setThisFieldAssig(List<?> list)
     {
-        this._thisFieldAssig_.clear();
-        this._thisFieldAssig_.addAll(list);
-        for(PThisFieldAssig e : list)
+        for(PThisFieldAssig e : this._thisFieldAssig_)
         {
+            e.parent(null);
+        }
+        this._thisFieldAssig_.clear();
+
+        for(Object obj_e : list)
+        {
+            PThisFieldAssig e = (PThisFieldAssig) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._thisFieldAssig_.add(e);
         }
     }
 

@@ -74,6 +74,7 @@ public final class AMethodDecl extends PMethodDecl
             cloneNode(this._rBrace_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAMethodDecl(this);

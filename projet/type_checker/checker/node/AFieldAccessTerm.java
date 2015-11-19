@@ -39,6 +39,7 @@ public final class AFieldAccessTerm extends PTerm
             cloneNode(this._identifier_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAFieldAccessTerm(this);

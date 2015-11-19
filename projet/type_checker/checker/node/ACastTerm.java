@@ -44,6 +44,7 @@ public final class ACastTerm extends PTerm
             cloneNode(this._nonLeftRecTerm_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseACastTerm(this);

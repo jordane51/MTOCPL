@@ -25,6 +25,7 @@ public final class TLSq extends Token
       return new TLSq(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTLSq(this);

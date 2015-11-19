@@ -8,4 +8,4 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 #
 # IMPORTANT: Put the absolute path to sablecc.jar below.
-java -jar lib/sablecc.jar $*
+java -jar /home/remi/Desktop/MTOCPL/projet/sablecc-3.7/lib/sablecc.jar $*

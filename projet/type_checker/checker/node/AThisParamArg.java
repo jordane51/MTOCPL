@@ -34,6 +34,7 @@ public final class AThisParamArg extends PParamArg
             cloneNode(this._identifier_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAThisParamArg(this);

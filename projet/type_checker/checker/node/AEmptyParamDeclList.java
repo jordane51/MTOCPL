@@ -19,6 +19,7 @@ public final class AEmptyParamDeclList extends PParamDeclList
         return new AEmptyParamDeclList();
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAEmptyParamDeclList(this);

@@ -59,4 +59,5 @@ public interface Analysis extends Switch
     void caseTBlank(TBlank node);
     void caseTIdentifier(TIdentifier node);
     void caseEOF(EOF node);
+    void caseInvalidToken(InvalidToken node);
 }

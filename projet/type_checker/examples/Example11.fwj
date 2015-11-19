@@ -1,0 +1,16 @@
+class A extends Object {
+    A() { super(); }
+}
+class B extends Object {
+    B() { super(); }
+}
+class Pair extends Object {
+    Pair fst;
+    Object snd;
+    Pair(Pair fst, Object snd) {
+        super(); this.fst=fst; this.snd=snd;
+    }
+    Pair setfst(A newfst) {
+        return new Pair(newfst, this.snd);
+    }
+}

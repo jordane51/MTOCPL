@@ -39,6 +39,7 @@ public final class AFieldDecl extends PFieldDecl
             cloneNode(this._semicolon_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAFieldDecl(this);

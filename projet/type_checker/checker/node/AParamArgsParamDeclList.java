@@ -18,7 +18,7 @@ public final class AParamArgsParamDeclList extends PParamDeclList
 
     public AParamArgsParamDeclList(
         @SuppressWarnings("hiding") PParamArg _paramArg_,
-        @SuppressWarnings("hiding") List<PCommaParamArgList> _commaParamArgList_)
+        @SuppressWarnings("hiding") List<?> _commaParamArgList_)
     {
         // Constructor
         setParamArg(_paramArg_);
@@ -35,6 +35,7 @@ public final class AParamArgsParamDeclList extends PParamDeclList
             cloneList(this._commaParamArgList_));
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAParamArgsParamDeclList(this);
@@ -70,18 +71,24 @@ public final class AParamArgsParamDeclList extends PParamDeclList
         return this._commaParamArgList_;
     }
 
-    public void setCommaParamArgList(List<PCommaParamArgList> list)
+    public void setCommaParamArgList(List<?> list)
     {
-        this._commaParamArgList_.clear();
-        this._commaParamArgList_.addAll(list);
-        for(PCommaParamArgList e : list)
+        for(PCommaParamArgList e : this._commaParamArgList_)
         {
+            e.parent(null);
+        }
+        this._commaParamArgList_.clear();
+
+        for(Object obj_e : list)
+        {
+            PCommaParamArgList e = (PCommaParamArgList) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
+            this._commaParamArgList_.add(e);
         }
     }
 

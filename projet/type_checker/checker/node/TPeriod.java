@@ -25,6 +25,7 @@ public final class TPeriod extends Token
       return new TPeriod(getLine(), getPos());
     }
 
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTPeriod(this);

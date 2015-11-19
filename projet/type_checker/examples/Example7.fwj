@@ -1,6 +1,6 @@
 class A extends Object {
     A() { super(); }
 }
-class B extends C {
-    B() { super(); }
+class A extends Object {
+    A() { super(); }
 }
